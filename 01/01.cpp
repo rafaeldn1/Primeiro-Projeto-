@@ -6,26 +6,22 @@ int main() {
 
     std::cout << "Saldo: R$";
     std::cin >> saldo;
-    if (std::cin.fail()) {
-        std::cout << "Digite apenas numeros.\n";
-        return 1;
+
+    while (std::cin.fail() || saldo < 0) {
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        std::cout << "Saldo invalido. Digite de novo: R$";
+        std::cin >> saldo;
     }
 
     std::cout << "Compra: R$";
     std::cin >> compra;
-    if (std::cin.fail()) {
-        std::cout << "Digite apenas numeros.\n";
-        return 1;
-    }
 
-    if (saldo < 0) {
-        std::cout << "Saldo invalido.\n";
-        return 1;
-    }
-
-    if (compra <= 0) {
-        std::cout << "Valor invalido.\n";
-        return 1;
+    while (std::cin.fail() || compra <= 0) {
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        std::cout << "Compra invalida. Digite de novo: R$";
+        std::cin >> compra;
     }
 
     if (compra <= saldo) {
